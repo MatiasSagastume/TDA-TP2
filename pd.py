@@ -18,7 +18,7 @@ def pd(archivo):
                 padres[i] = i - j - 1
                 maximo = eliminados
         optimo_minuto.append(maximo)
-    return optimo_minuto[MINUTO_INICIAL:], reconstruir_estrategia(padres, minutos)
+    return optimo_minuto[minutos], reconstruir_estrategia(padres, minutos)
 
 
 def reconstruir_estrategia(padres, minuto):

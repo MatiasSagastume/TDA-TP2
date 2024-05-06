@@ -17,4 +17,4 @@ def random_cases_generator(ruta, max_enemigos, max_recarga, minutos):
 
 
 for i in range(1, 11):
-    random_cases_generator(f"../Casos/CasosNuestros/caso{i}.txt", 5000, 10, 1000)
+    random_cases_generator(f"../caso{i}.txt", 30, 10, 5)

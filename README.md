@@ -9,7 +9,7 @@ Para correr el programa desde Linux:
 ```
 Ejemplo: ./main Casos/CasosCatedra/500.txt
 
-Una vez ejecutado, el resultado de la prueba será almacenado en resultado.txt en el directorio actual.
+Una vez ejecutado, el resultado de la prueba no será mostrado por el terminal, si no que será almacenado en `resultado.txt` en el directorio actual.
 
 En caso de querer guardarlo en una ruta especifica ingresar:
 

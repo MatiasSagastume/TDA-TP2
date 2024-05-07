@@ -16,17 +16,31 @@ TAMANIO_SALTO = 100
 
 
 def pd(minutos, oleadas, valoresFuncion):
+    valoresFuncion = optimizar_funcion(valoresFuncion, oleadas)
     optimo_minuto = [POS_MINUTO_0]
+    padres = {}
     for i in range(MINUTO_INICIAL, minutos + 1):
         maximo = MAXIMO_INICIAL
         for j in range(i):
             valorF = valoresFuncion[j]
-            oleada = oleadas[i - 1]
+            oleada = oleadas[i-1]
             eliminados = min(valorF, oleada) + optimo_minuto[i - j - 1]
             if eliminados >= maximo:
+                padres[i] = i - j - 1
                 maximo = eliminados
+            if valorF >= oleada:
+                break
         optimo_minuto.append(maximo)
     return optimo_minuto[minutos]
+
+def optimizar_funcion(valores_funcion, oleadas):
+    maximo_enemigos = max(oleadas)
+    funcion_optimizada = []
+    for valor in valores_funcion:
+        funcion_optimizada.append(valor)
+        if valor >= maximo_enemigos:
+            break
+    return funcion_optimizada
 
 
 def random_generator(max_enemigos, max_recarga, minutos):
@@ -83,4 +97,4 @@ def graficarxcuadrado():
     plt.show()
 
 
-graficarxcuadrado()
+graficarFuncionTamanio()

@@ -16,4 +16,4 @@ En caso de querer guardarlo en una ruta especifica ingresar:
 ```
 ./main <ruta del archivo .txt con las batallas> -guardar <ruta de guardado incluyendo el nombre del archivo>.txt 
 ```
-Nota: El ejecutable main requiere estar en el mismo directorio que el directorio _internal.
+Nota: El ejecutable main requiere estar en el mismo directorio que el directorio _internal y en caso de no poder ejecutar el programa existe un repuesto dentro de la carpeta dist, dentro de la carpeta main.

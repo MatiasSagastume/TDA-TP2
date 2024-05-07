@@ -97,4 +97,4 @@ def graficarxcuadrado():
     plt.show()
 
 
-graficarFuncionTamanio()
+graficarxcuadrado()

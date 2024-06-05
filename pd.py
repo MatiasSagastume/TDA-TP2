@@ -6,7 +6,6 @@ MAXIMO_INICIAL = 0
 
 def pd(archivo):
     minutos, oleadas, valoresFuncion = leer_archivo(archivo)
-    valoresFuncion = optimizar_funcion(valoresFuncion, oleadas)
     optimo_minuto = [POS_MINUTO_0]
     padres = {}
     for i in range(MINUTO_INICIAL, minutos + 1):
@@ -23,14 +22,6 @@ def pd(archivo):
         optimo_minuto.append(maximo)
     return optimo_minuto[minutos], reconstruir_estrategia(padres, minutos)
 
-def optimizar_funcion(valores_funcion, oleadas):
-    maximo_enemigos = max(oleadas)
-    funcion_optimizada = []
-    for valor in valores_funcion:
-        funcion_optimizada.append(valor)
-        if valor >= maximo_enemigos:
-            break
-    return funcion_optimizada
 
 def reconstruir_estrategia(padres, minuto):
     res = []

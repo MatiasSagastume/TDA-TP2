@@ -11,12 +11,11 @@ MAX_ENEMIGOS = 5000
 MAX_RECARGA = 10
 
 TAMANIO_INICIAL = 1
-TAMANIO_FINAL = 10000
-TAMANIO_SALTO = 100
+TAMANIO_FINAL = 100000
+TAMANIO_SALTO = 1000
 
 
 def pd(minutos, oleadas, valoresFuncion):
-    valoresFuncion = optimizar_funcion(valoresFuncion, oleadas)
     optimo_minuto = [POS_MINUTO_0]
     padres = {}
     for i in range(MINUTO_INICIAL, minutos + 1):
@@ -81,6 +80,34 @@ def graficarFuncionTamanio():
     plt.show()
 
 
+def crear_tamanio_vs_tiempo_f_exponencial(max_enemigos, max_recarga, minutos):
+    oleadas, valoresFuncion = random_generator(max_enemigos, max_recarga, minutos)
+    for i in range(minutos):
+        valoresFuncion[i] = 2 ** i
+    inicio = time.time()
+    pd(minutos, oleadas, valoresFuncion)
+    fin = time.time()
+    duracion = fin - inicio
+    return duracion * 1000
+
+
+def graficarConFuncionExponencial():
+    listaTamanios = []
+    listaDuraciones = []
+    for i in range(TAMANIO_INICIAL, TAMANIO_FINAL, TAMANIO_SALTO):
+        tiempo = crear_tamanio_vs_tiempo_f_exponencial(MAX_ENEMIGOS, MAX_RECARGA, i)
+        listaTamanios.append(i)
+        listaDuraciones.append(tiempo)
+    plt.figure(figsize=(10, 6))
+    plt.plot(listaTamanios, listaDuraciones, marker='o', linestyle='-')
+    plt.title('Gráfico de Tamaño vs Tiempo')
+    plt.xlabel('Tamaño de entrada')
+    plt.ylabel('Tiempo (milisegundos)')
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+
 def graficarxcuadrado():
     listaTamanios = []
     listaDuraciones = []
@@ -97,4 +124,3 @@ def graficarxcuadrado():
     plt.show()
 
 
-graficarxcuadrado()
